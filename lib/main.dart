@@ -1,7 +1,13 @@
+import 'package:auto_updater/auto_updater.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
+  String feedURL =
+      'https://www.dropbox.com/scl/fi/w8ct3b4im3i7yz2n15v25/appcast.xml?rlkey=d8u0c528ib53qh2dnz1pr1a98&st=47tcm1jh&dl=1';
+  await autoUpdater.setFeedURL(feedURL);
+  await autoUpdater.checkForUpdates(inBackground: true);
+  await autoUpdater.setScheduledCheckInterval(3600);
 }
 
 class MyApp extends StatelessWidget {
